@@ -1,0 +1,64 @@
+baseURL = "https://artk.me"
+title = "Инженерия и прочие радости"
+theme = "hugo-notepadium"
+copyright = "©2020 Art Khov"
+
+languageCode = "ru"  # for the RSS generation
+defaultContentLanguage = "ru"
+
+hasCJKLanguage = true
+
+enableRobotsTXT = true
+
+# Enable Disqus
+disqusShortname = "artkhov"
+
+# Google Analytics
+#googleAnalytics = "UA-123-45"
+
+[markup.highlight]
+codeFences = true
+noClasses = false
+
+[markup.goldmark.renderer]
+unsafe = true  # enable raw HTML in Markdown
+
+[params]
+style = "auto"  # default: auto. light: light theme, dark: dark theme, auto: based on system.
+dateFormat = "2006-01-02"  # if unset, default is "2006-01-02"
+logo = "/img/logo.png"  # if you have a logo png
+favicon = "/img/favicon.ico"
+slogan = "Записная книжка программиста"
+license = ""  # CC License
+fullRss = false # Puts entire HTML post into rss 'description' tag. If unset, default is false.
+
+[params.comments]
+enable = true  # En/Disable comments globally, default: false. You can always enable comments on per page.
+
+[params.math]
+enable = false  # optional: true, false. Enable globally, default: false. You can always enable math on per page.
+use = "katex"  # option: "katex", "mathjax". default: "katex"
+
+[params.syntax]
+use = "hljs"  # 1. prismjs 2. hljs 3. none
+theme = "dracula"
+darkTheme = "xcode-dark"  # apply this theme in dark mode
+
+[params.share]
+enable = false
+addThisId = ""
+inlineToolId = ""
+
+[params.nav]
+showCategories = true       # /categories/
+showTags = true             # /tags/
+
+# custom navigation items
+
+[[params.nav.custom]]
+title = "Обо мне"
+url = "/about"
+
+#[[params.nav.custom]]
+#title = "Hugo"
+#url = "https://gohugo.io/"

@@ -1,0 +1,15 @@
+[edited]
+other = " • отредактированно %s"
+
+[readingTime]
+one = " • One minute to read"
+other = " • {{ .Count }} minutes to read"
+
+[more]
+other = "больше"
+
+[Categories]
+other = "Категории"
+
+[Tags]
+other = "Теги"

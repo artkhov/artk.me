@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Blogs on Инженерия и прочие радости</title>
+    <link>/blog/</link>
+    <description>Recent content in Blogs on Инженерия и прочие радости</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <copyright>©2020 Art Khov</copyright>
+    <lastBuildDate>Fri, 10 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+        <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Первый пост</title>
+      <link>/blog/first_post/</link>
+      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/first_post/</guid>
+      <description>В своих трудах Аристотель вкладывал в термин «техника» значение искусства производить вещи; древнегреческий философ усматривал различие между техникой и наукой в том, что техника направлена не на познание сущности вещей, а на их создание. Этой же точки зрения придерживался немецкий философ И. Кант, приводя для примера разницу между искусством землемера (практическая деятельность) и геометрией (теория)[3]. Энциклопедический словарь Брокгауза и Ефрона (ред. 1907 года) определял технику как «всякое приложение теоретических знаний к практике»[4].</description>
+      
+    </item>
+    
+  </channel>
+</rss>
