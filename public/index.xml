@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Инженерия и прочие радости</title>
+    <title>ArtK.me</title>
     <link>/</link>
-    <description>Recent content on Инженерия и прочие радости</description>
+    <description>Recent content on ArtK.me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
     <copyright>©2020 Art Khov</copyright>
-    <lastBuildDate>Fri, 10 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2020 18:41:51 +0300</lastBuildDate>
     
         <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,10 +15,12 @@
     <item>
       <title>Blogs</title>
       <link>/blog/</link>
-      <pubDate>Fri, 10 Apr 2020 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 09 May 2020 18:41:51 +0300</pubDate>
       
       <guid>/blog/</guid>
       <description></description>
+      
+      <content:encoded><![CDATA[]]></content:encoded>
       
     </item>
     
@@ -28,7 +30,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>Привет, камрад, меня зовут Артём! Здесь я пишу о том что меня интересует и просто веду свои заметки. Если у тебя появились вопросы, ты можешь написать мне на artk@artk.me.</description>
+      <description>Привет, Камрад! Меня зовут Артём. Здесь я пишу о том, что меня интересует и просто веду свои заметки. Если у тебя появились вопросы, ты можешь написать мне на artk@artk.me.</description>
+      
+      <content:encoded><![CDATA[<p>Привет, Камрад! <br>
+Меня зовут Артём. <br>
+Здесь я пишу о том, что меня интересует и просто веду свои заметки. <br>
+Если у тебя появились вопросы, ты можешь написать мне на <strong><a href="mailto:artk@artk.me">artk@artk.me</a></strong>.</p>
+]]></content:encoded>
       
     </item>
     

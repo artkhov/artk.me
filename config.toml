@@ -1,5 +1,5 @@
 baseURL = "https://artk.me"
-title = "Инженерия и прочие радости"
+title = "ArtK.me"
 theme = "hugo-notepadium"
 copyright = "©2020 Art Khov"
 
@@ -25,11 +25,12 @@ unsafe = true  # enable raw HTML in Markdown
 
 [params]
 style = "auto"  # default: auto. light: light theme, dark: dark theme, auto: based on system.
-dateFormat = "2006-01-02"  # if unset, default is "2006-01-02"
+dateFormat = "Jan 02, 2006"  # if unset, default is "2006-01-02"
 logo = "/img/brain_2.png"  # if you have a logo png
-slogan = "Записная книжка программиста"
+slogan = "В абсолютно здравомыслящем обществе единственная свобода — это безумие."
 license = ""  # CC License
-fullRss = false # Puts entire HTML post into rss 'description' tag. If unset, default is false.
+fullRss = true # Puts entire HTML post into rss 'description' tag. If unset, default is false.
+description = "Инженерия и прочие радости. Блог о программирование, цифровой электронике и гаджетах."
 
 [params.comments]
 enable = true  # En/Disable comments globally, default: false. You can always enable comments on per page.
