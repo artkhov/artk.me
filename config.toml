@@ -14,7 +14,7 @@ enableRobotsTXT = true
 disqusShortname = "artk-me-1"
 
 # Google Analytics
-#googleAnalytics = "UA-123-45"
+googleAnalytics = "UA-166038820-1"
 
 [markup.highlight]
 codeFences = true
