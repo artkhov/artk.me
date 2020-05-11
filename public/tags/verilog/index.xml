@@ -7,51 +7,322 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
     <copyright>©2020 Art Khov</copyright>
-    <lastBuildDate>Sat, 09 May 2020 18:41:51 +0300</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2020 10:49:22 +0300</lastBuildDate>
     
         <atom:link href="/tags/verilog/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>SystemVerilog. Начало. Комбинационные схемы.</title>
+      <link>/blog/systemverilog_module_comb/</link>
+      <pubDate>Sun, 10 May 2020 10:49:22 +0300</pubDate>
+      
+      <guid>/blog/systemverilog_module_comb/</guid>
+      <description>&lt;p&gt;В языке SystemVerilog минимальной поведенческой сущностью для описания блоков цифровой аппаратуры служит &lt;strong&gt;модуль&lt;/strong&gt;.
+Модуль имеет входные и выходные сигналы. В SystemVerilog есть два основных типа сигналов: &lt;em&gt;logic&lt;/em&gt; и &lt;em&gt;net&lt;/em&gt;.&lt;/p&gt;</description>
+      
+      <content:encoded><![CDATA[<p>В языке SystemVerilog минимальной поведенческой сущностью для описания блоков цифровой аппаратуры служит <strong>модуль</strong>.
+Модуль имеет входные и выходные сигналы. В SystemVerilog есть два основных типа сигналов: <em>logic</em> и <em>net</em>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span> <span class="n">func</span> <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> 
+             <span class="k">output</span> <span class="k">logic</span> <span class="n">result</span><span class="p">);</span>
+    <span class="k">assign</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">;</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">func</span>
+</code></pre></div><blockquote>
+<p>В примере выше я описал простой модуль с названием <strong>func</strong>.
+В данном случае модуль принимает на вход три сигнала <strong>a</strong>, <strong>b</strong>, <strong>c</strong> и отдает на выход один сигнал <strong>result</strong>.
+Все сигналы имеют тип <em>logic</em>, который появился в SystemVerilog как замена <em>reg</em>. <br>
+<code>Тип</code> <em>logic</em> <code>стоит использовать везде, кроме описания сигналов с несколькими источниками.</code></p>
+</blockquote>
+<hr>
+<h3 id="комбинационные-схемы">Комбинационные схемы</h3>
+<p>Отличительная особенность комбинационных схем состоит в том,
+что значения на выходах определяются только значениями на входе. Комбинационные схемы не имеют состояния,
+и не хранят результат предыдущих операций.
+<br>
+Для описания комбинационных схем в SystemVerilog используются операторы:</p>
+<h5 id="assign">assign</h5>
+<p>Оператор непрерывного присваивания, вычисление значения <strong>y</strong> происходит сразу при изменении значения <strong>a</strong>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">assign</span> <span class="n">y</span> <span class="o">=</span> <span class="o">~</span><span class="n">a</span>
+</code></pre></div><h5 id="always_comb">always_comb</h5>
+<p><strong>always_comb</strong> появился как расширение оператора <strong>always</strong>, который в общем виде выглядит следующим образом:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">always</span> <span class="p">@(</span><span class="err">список</span> <span class="err">чувствительности</span><span class="p">)</span>
+</code></pre></div><p><strong>always_comb</strong> эквивалентен <strong>always @(*)</strong>, но <strong>always_comb</strong> предпочтительнее,
+т.к. если данный блок будет содержать не только комбинационную логику, SystemVerilog будет выдавать предупреждение.</p>
+<p><strong>always_comb</strong> похож на цикл, который ждет изменения любого значения в правой части уравнений,
+как только это происходит, блок выполняется.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span> <span class="n">func</span> <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> 
+      <span class="k">output</span> <span class="k">logic</span> <span class="n">result</span><span class="p">);</span>
+  <span class="k">always_comb</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+      <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">;</span>
+  <span class="k">else</span> <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">|</span> <span class="n">c</span><span class="p">;</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">func</span>
+<span class="cm">/* Как только поменяется значение на одном из входов(a, b, c)
+</span><span class="cm">будет вычислен result */</span>
+
+</code></pre></div><hr>
+<h4 id="операторы-выбора-и-управления">Операторы выбора и управления</h4>
+<h5 id="if-else">if else</h5>
+<p>Операторы <em>if</em> <em>else</em> работают по такому же принципу как и в классических языках программирования.
+В общем виде объявление выглядит так:</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">if</span> <span class="p">(</span><span class="n">conditional_expression</span><span class="p">)</span> <span class="n">statements</span><span class="p">;</span>
+<span class="k">else</span> <span class="n">statement</span><span class="p">;</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="c1">// Пример модуля с if else
+</span><span class="c1"></span><span class="k">module</span> <span class="k">if</span>
+    <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="p">,</span><span class="n">c</span><span class="p">,</span>
+     <span class="k">output</span> <span class="k">logic</span> <span class="n">f</span><span class="p">);</span>
+
+    <span class="k">always_comb</span> <span class="k">begin</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">)</span> <span class="n">f</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">&amp;</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">)</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+        <span class="k">else</span> <span class="n">f</span> <span class="o">=</span> <span class="mh">0</span><span class="p">;</span>
+    <span class="k">end</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="k">if</span>
+</code></pre></div><h5 id="case">case</h5>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="c1">// Обычный case
+</span><span class="c1"></span><span class="k">module</span> <span class="n">exampleCase</span>
+    <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span>
+     <span class="k">output</span> <span class="k">logic</span> <span class="n">f</span><span class="p">);</span>
+    
+    <span class="k">always_comb</span>
+        <span class="k">case</span> <span class="p">({</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">})</span>
+            <span class="mh">2</span><span class="mb">&#39;b00</span><span class="o">:</span> <span class="n">f</span> <span class="o">=</span> <span class="mh">0</span><span class="p">;</span>
+            <span class="mh">2</span><span class="mb">&#39;b01</span><span class="o">:</span> <span class="n">f</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+            <span class="mh">2</span><span class="mb">&#39;b10</span><span class="o">:</span> <span class="n">f</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+            <span class="mh">2</span><span class="mb">&#39;b11</span><span class="o">:</span> <span class="n">f</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+        <span class="k">endcase</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">exampleCase</span>
+</code></pre></div><p>Оператор <em>case</em> находит первый подходящий вариант, после чего исполняется оператор справа.</p>
+<ul>
+<li>{a, b} - <code>{}</code> оператор конкатенации, позволяет создать новую переменную. Если <em>a = 0</em>, <em>b = 1</em>, то переменная <em>{a, b}</em> будет иметь значение <em>01</em></li>
+<li>конструкция <em>2&rsquo;b00</em> позволяет определить константу с заданной разрядностью.</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="mh">3</span><span class="mb">&#39;b011</span>  <span class="c1">// 3-битная константа с двоичным значением
+</span><span class="c1"></span><span class="mh">3</span><span class="mi">&#39;d8</span>    <span class="c1">// 3-битная константа с десятичным значением
+</span><span class="c1"></span><span class="mh">3&#39;hA</span>    <span class="c1">// 3-битная константа с шестнадцатеричным значением
+</span></code></pre></div><h6 id="unique-case">unique case</h6>
+<p>Часто ф-ции задаются не полностью, т.к. часть значений не имеет значения, такие комбинации называются несущественными(&ldquo;don&rsquo;t cares&rdquo;).</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">case</span> <span class="p">({</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">})</span>
+    <span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">,</span> <span class="mh">3</span><span class="mb">&#39;b001</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="mh">3</span><span class="mb">&#39;b101</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="mh">3</span><span class="mb">&#39;b100</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="mh">3</span><span class="mb">&#39;b111</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="k">default</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">0</span><span class="p">;</span> <span class="c1">// если значения не совпадает с 3-битными константами сверху,
+</span><span class="c1"></span>                         <span class="c1">// то выбирается default
+</span><span class="c1"></span><span class="k">endcase</span>
+</code></pre></div><blockquote>
+<p><code>Если забыть указать оператор default, то наша схема уже не будет комбинационной. Оператор case принимает 3-битную переменную, которую мы получаем с помощью оператора конкатенации {} из 3 переменных a, b  и c. У 3-битной переменной может быть восемь возможных значений, а мы указали только пять. Инструменты синтеза проанализировав код увидят, что если значение будут 3'b011, 3'b110, 3'b010,  то значение result - это результат выполнения предыдущего цикла.</code></p>
+</blockquote>
+<p>Оператор <em>unique case</em> работает похожим образом, что и <em>case</em> с <em>default</em>.
+Инструменты синтеза, сталкиваясь с оператором <em>unique case</em>, будут выдавать ошибку если на вход подаётся недопустимое значение,
+которое не перечислено в кейсах.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">unique</span> <span class="k">case</span> <span class="p">({</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">})</span>
+    <span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">,</span> <span class="mh">3</span><span class="mb">&#39;b001</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="mh">3</span><span class="mb">&#39;b101</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="mh">3</span><span class="mb">&#39;b100</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+    <span class="mh">3</span><span class="mb">&#39;b111</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
+<span class="k">endcase</span>
+</code></pre></div><hr>
+<h5 id="параметризованные-модули">Параметризованные модули</h5>
+<p>Входной или выходной сигнал типа <em>logic</em> может быть не только проводом, но и шиной данных, которая передаёт несколько бит информации.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span> <span class="n">example</span>
+        <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span>
+         <span class="k">output</span> <span class="k">logic</span> <span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">result</span><span class="p">);</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">example</span>
+<span class="cm">/* Модуль example принимает на вход две 2-битных шины a и b 
+</span><span class="cm">на выход 2-битную шину result
+</span><span class="cm">*/</span>
+</code></pre></div><blockquote>
+<p>a[1:0] - представляет 2-битную шину. <br>
+Биты, от старшего к младшему, записываются: a[1], a[0] - такой порядок бит называется little-endian.
+Когда биты записываются в обратном порядке a[0:1] - такой порядок называется big-endian.</p>
+</blockquote>
+<p>Для того чтобы модули можно было переиспользовать, кол-во бит в шинах может быть задано параметром и переопределятся
+в зависимости от контекста вызова и необходимости.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span> <span class="n">exampleParam</span>
+        <span class="p">#(</span><span class="k">parameter</span> <span class="n">W</span> <span class="o">=</span> <span class="mh">8</span><span class="p">)</span> <span class="c1">// шина данных задана через параметр
+</span><span class="c1"></span>        <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="p">[</span><span class="n">W</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span>
+         <span class="k">output</span> <span class="k">logic</span> <span class="p">[</span><span class="n">W</span><span class="o">-</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">result</span><span class="p">);</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">exampleParam</span>
+
+<span class="c1">// вызов модуля exampleParam в другой часте программы
+</span><span class="c1">// с переопределением размерности шины данных
+</span><span class="c1"></span><span class="k">module</span> <span class="n">ex2</span><span class="p">;</span>
+    <span class="k">logic</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">result</span><span class="p">;</span>
+    <span class="c1">// переопределение размерности шины
+</span><span class="c1"></span>    <span class="c1">// она становится 32-битной
+</span><span class="c1"></span>    <span class="n">exampleParam</span> <span class="p">(#</span><span class="mh">32</span><span class="p">)</span> <span class="n">a1</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">ex2</span>
+</code></pre></div><hr>
+<h5 id="перечисления-enum">Перечисления (enum)</h5>
+<p>Перечисления в SystemVerilog очень похожы на enum в классических языках программирования.
+Использование имен вместо числовых значений уменьшает вероятность ошибки.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="c1">// переменные op1 и op2 - строго типизированы,
+</span><span class="c1">// могут принимать одно из трех значений (ADD, MOV, JMP).
+</span><span class="c1"></span><span class="k">enum</span> <span class="p">{</span><span class="n">ADD</span><span class="p">,</span> <span class="n">MOV</span><span class="p">,</span> <span class="n">JMP</span><span class="p">}</span> <span class="n">op1</span><span class="p">,</span> <span class="n">op2</span><span class="p">;</span>
+</code></pre></div><blockquote>
+<p>По умолчанию элементы перечесления имеют тип <em>int</em> и принимают последовательные значения начиная с 0.
+Можно указать любой <a href="/blog/systemverilog_data_types/"title="целочисленный тип">целочисленный тип</a>.</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span><span class="o">:</span> <span class="n">example1</span><span class="p">;</span>
+    <span class="k">enum</span> <span class="k">logic</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="p">{</span><span class="n">ADD</span><span class="p">,</span> <span class="n">SUB</span><span class="p">,</span> <span class="n">AND</span><span class="p">,</span> <span class="n">OR</span><span class="p">,</span> <span class="n">XOR</span><span class="p">}</span> <span class="n">op</span><span class="p">;</span>
+    <span class="p">...</span>
+    <span class="k">always_comb</span>
+        <span class="k">unique</span> <span class="k">case</span> <span class="p">(</span><span class="n">op</span><span class="p">)</span>
+            <span class="nl">ADD:</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+            <span class="nl">SUB:</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+            <span class="nl">AND:</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span><span class="p">;</span>
+            <span class="nl">OR:</span>  <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="p">;</span>
+            <span class="nl">XOR:</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">^</span> <span class="n">b</span><span class="p">;</span>
+        <span class="k">endcase</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">example1</span>
+
+<span class="k">module</span><span class="o">:</span> <span class="n">example2</span><span class="p">;</span>
+    <span class="k">enum</span> <span class="k">logic</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>
+       <span class="p">{</span><span class="n">ADD</span><span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b001</span><span class="p">,</span>
+        <span class="n">SUB</span><span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b011</span><span class="p">,</span>
+        <span class="n">AND</span><span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b111</span><span class="p">,</span>
+        <span class="n">OR</span><span class="o">=</span>  <span class="mh">3</span><span class="mb">&#39;b110</span><span class="p">,</span>
+        <span class="n">XOR</span><span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b100</span> <span class="p">}</span> <span class="n">op</span><span class="p">;</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">example2</span>
+</code></pre></div><h5 id="определение-типа-typedef">Определение типа (typedef)</h5>
+<p>Ключевое слово <strong>typedef</strong>, позволяет определить новый тип данных, который можно использовать при определении переменных и портов.</p>
+<div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">typedef</span> <span class="k">enum</span> <span class="k">logic</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span>
+       <span class="p">{</span><span class="n">ADD</span><span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b001</span><span class="p">,</span>
+        <span class="n">SUB</span><span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b011</span><span class="p">,</span>
+        <span class="n">AND</span><span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b111</span><span class="p">,</span>
+        <span class="n">OR</span><span class="o">=</span>  <span class="mh">3</span><span class="mb">&#39;b110</span><span class="p">,</span>
+        <span class="n">XOR</span><span class="o">=</span> <span class="mh">3</span><span class="mb">&#39;b100</span> <span class="p">}</span> <span class="n">aluInstruction</span><span class="p">;</span>
+
+<span class="k">module</span><span class="o">:</span> <span class="n">alu</span>
+    <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span>
+     <span class="k">output</span> <span class="k">logic</span> <span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="n">result</span><span class="p">,</span>
+     <span class="k">input</span> <span class="n">aluInstruction</span> <span class="n">op</span><span class="p">);</span>
+    
+    <span class="p">...</span>
+<span class="k">endmodule</span><span class="o">:</span> <span class="n">alu</span>
+</code></pre></div>]]></content:encoded>
+      
+    </item>
+    
+    <item>
       <title>SystemVerilog. Целочисленные типы данных.</title>
-      <link>/blog/systemverilog_types/</link>
+      <link>/blog/systemverilog_data_types/</link>
       <pubDate>Sat, 09 May 2020 18:41:51 +0300</pubDate>
       
-      <guid>/blog/systemverilog_types/</guid>
-      <description>&lt;p&gt;йцуйцу&lt;/p&gt;</description>
+      <guid>/blog/systemverilog_data_types/</guid>
+      <description>&lt;p&gt;Вопреки расхожему мнению, при описании цифровой схемы, бит может принимать значение отличное от 1 или 0 (true | false),
+что на самом деле противоречит булевой алгебре. Давайте разбираться&amp;hellip;&lt;/p&gt;
+&lt;p&gt;За исключением 0 и 1, бит так же может принимать значение &lt;strong&gt;Х&lt;/strong&gt; - представляющее неизвестное значение или &lt;strong&gt;Z&lt;/strong&gt; - представляющее значение с высоким импедансом.&lt;/p&gt;</description>
       
-      <content:encoded><![CDATA[<p>йцуйцу</p>
+      <content:encoded><![CDATA[<p>Вопреки расхожему мнению, при описании цифровой схемы, бит может принимать значение отличное от 1 или 0 (true | false),
+что на самом деле противоречит булевой алгебре. Давайте разбираться&hellip;</p>
+<p>За исключением 0 и 1, бит так же может принимать значение <strong>Х</strong> - представляющее неизвестное значение или <strong>Z</strong> - представляющее значение с высоким импедансом.</p>
+<h5 id="неизвестное-значение-x">Неизвестное значение <strong>X</strong></h5>
+<ul>
+<li>
+<p><strong>В схеме</strong></p>
+<p>Символ <strong>X</strong> обозначает неизвестное или недопустимое значение физического напряжения в схеме, отличающееся от 0 и 1.
+Примером такого поведения служит участок схемы, где на выход подается сразу два сигнала 0 и 1, одновременно.</p>
+</li>
+<li>
+<p><strong>При моделировании</strong></p>
+<p>Значение <strong>X</strong> иногда используется программами моделирования для обозначения неинициализированного значения.
+Так же значение <strong>X</strong> принимают биты переменные  4-х значных типов во время старта симуляции до тех пор пока бит не получит значение.</p>
+</li>
+<li>
+<p><strong>В таблице истинности</strong></p>
+<p>Разработчики цифровых схем используют символ <strong>X</strong> для обозначения в таблицах истинности безразличных переменных,
+от которых не зависит состояние выходов.</p>
+</li>
+</ul>
+<blockquote>
+<p><code>Не стоит путать</code> <strong>X</strong> <code>в этих разных случаях, появление</code> <strong>X</strong>  <code>в схеме означает, что цепь имеет неизвестное или недопустимое значение.</code></p>
+</blockquote>
+<h5 id="значение-с-высоким-импедансом-z">Значение с высоким импедансом <strong>Z</strong></h5>
+<p>Символ <strong>Z</strong>  означает, что выход отсоединен и на него не подаются значения 0 или 1.
+Такое поведение наблюдается при использовании тристабильного буфера.</p>
+<blockquote>
+<p>Разница между символом <strong>X</strong> и <strong>Z</strong> заключается в том, что <strong>X</strong> это неопределенное или некорректное значение.
+А <strong>Z</strong>, говорит что выход отсоединен, напряжение не подается на линию.</p>
+</blockquote>
+<h4 id="целочисленные-типы-данных">Целочисленные типы данных</h4>
 <table>
 <thead>
 <tr>
 <th>Тип данных</th>
-<th>2/4 бита (знака)</th>
+<th>2/4 бита (0,1,X,Z)</th>
+<th>Размер в битах</th>
+<th>signed или unsigned</th>
+<th>Значение в момент старта симуляции</th>
+<th>Доп.</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Dropbox</td>
-<td>[plugins/dropbox/README.md][PlDb]</td>
+<td>shortint</td>
+<td>2</td>
+<td>16</td>
+<td>signed</td>
+<td>0</td>
+<td></td>
 </tr>
 <tr>
-<td>GitHub</td>
-<td>[plugins/github/README.md][PlGh]</td>
+<td>int</td>
+<td>2</td>
+<td>32</td>
+<td>signed</td>
+<td>0</td>
+<td></td>
 </tr>
 <tr>
-<td>Google Drive</td>
-<td>[plugins/googledrive/README.md][PlGd]</td>
+<td>longint</td>
+<td>2</td>
+<td>64</td>
+<td>signed</td>
+<td>0</td>
+<td></td>
 </tr>
 <tr>
-<td>OneDrive</td>
-<td>[plugins/onedrive/README.md][PlOd]</td>
+<td>bit</td>
+<td>2</td>
+<td>Задается пользователем</td>
+<td>unsigned</td>
+<td>0</td>
+<td></td>
 </tr>
 <tr>
-<td>Medium</td>
-<td>[plugins/medium/README.md][PlMe]</td>
+<td>byte</td>
+<td>2</td>
+<td>8</td>
+<td>signed</td>
+<td>0</td>
+<td>аналог signed bit [7:0]</td>
 </tr>
 <tr>
-<td>Google Analytics</td>
-<td>[plugins/googleanalytics/README.md][PlGa]</td>
+<td>logic</td>
+<td>4</td>
+<td>Задается пользователем</td>
+<td>unsigned</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>integer</td>
+<td>4</td>
+<td>32</td>
+<td>signed</td>
+<td>X</td>
+<td></td>
+</tr>
+<tr>
+<td>time</td>
+<td>4</td>
+<td>64</td>
+<td>unsigned</td>
+<td>0</td>
+<td>может использоваться только в тестовом окружении</td>
 </tr>
 </tbody>
 </table>]]></content:encoded>
