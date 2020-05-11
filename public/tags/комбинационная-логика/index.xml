@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Blogs on ArtK.me</title>
-    <link>/blog/</link>
-    <description>Recent content in Blogs on ArtK.me</description>
+    <title>комбинационная логика on ArtK.me</title>
+    <link>/tags/%D0%BA%D0%BE%D0%BC%D0%B1%D0%B8%D0%BD%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F-%D0%BB%D0%BE%D0%B3%D0%B8%D0%BA%D0%B0/</link>
+    <description>Recent content in комбинационная логика on ArtK.me</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ru</language>
     <copyright>©2020 Art Khov</copyright>
     <lastBuildDate>Sun, 10 May 2020 10:49:22 +0300</lastBuildDate>
     
-        <atom:link href="/blog/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="/tags/%D0%BA%D0%BE%D0%BC%D0%B1%D0%B8%D0%BD%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F-%D0%BB%D0%BE%D0%B3%D0%B8%D0%BA%D0%B0/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -203,129 +203,6 @@
     <span class="p">...</span>
 <span class="k">endmodule</span><span class="o">:</span> <span class="n">alu</span>
 </code></pre></div>]]></content:encoded>
-      
-    </item>
-    
-    <item>
-      <title>SystemVerilog. Целочисленные типы данных.</title>
-      <link>/blog/systemverilog_data_types/</link>
-      <pubDate>Sat, 09 May 2020 18:41:51 +0300</pubDate>
-      
-      <guid>/blog/systemverilog_data_types/</guid>
-      <description>&lt;p&gt;Вопреки расхожему мнению, при описании цифровой схемы, бит может принимать значение отличное от 1 или 0 (true | false),
-что на самом деле противоречит булевой алгебре. Давайте разбираться&amp;hellip;&lt;/p&gt;
-&lt;p&gt;За исключением 0 и 1, бит так же может принимать значение &lt;strong&gt;Х&lt;/strong&gt; - представляющее неизвестное значение или &lt;strong&gt;Z&lt;/strong&gt; - представляющее значение с высоким импедансом.&lt;/p&gt;</description>
-      
-      <content:encoded><![CDATA[<p>Вопреки расхожему мнению, при описании цифровой схемы, бит может принимать значение отличное от 1 или 0 (true | false),
-что на самом деле противоречит булевой алгебре. Давайте разбираться&hellip;</p>
-<p>За исключением 0 и 1, бит так же может принимать значение <strong>Х</strong> - представляющее неизвестное значение или <strong>Z</strong> - представляющее значение с высоким импедансом.</p>
-<h5 id="неизвестное-значение-x">Неизвестное значение <strong>X</strong></h5>
-<ul>
-<li>
-<p><strong>В схеме</strong></p>
-<p>Символ <strong>X</strong> обозначает неизвестное или недопустимое значение физического напряжения в схеме, отличающееся от 0 и 1.
-Примером такого поведения служит участок схемы, где на выход подается сразу два сигнала 0 и 1, одновременно.</p>
-</li>
-<li>
-<p><strong>При моделировании</strong></p>
-<p>Значение <strong>X</strong> иногда используется программами моделирования для обозначения неинициализированного значения.
-Так же значение <strong>X</strong> принимают биты переменные  4-х значных типов во время старта симуляции до тех пор пока бит не получит значение.</p>
-</li>
-<li>
-<p><strong>В таблице истинности</strong></p>
-<p>Разработчики цифровых схем используют символ <strong>X</strong> для обозначения в таблицах истинности безразличных переменных,
-от которых не зависит состояние выходов.</p>
-</li>
-</ul>
-<blockquote>
-<p><code>Не стоит путать</code> <strong>X</strong> <code>в этих разных случаях, появление</code> <strong>X</strong>  <code>в схеме означает, что цепь имеет неизвестное или недопустимое значение.</code></p>
-</blockquote>
-<h5 id="значение-с-высоким-импедансом-z">Значение с высоким импедансом <strong>Z</strong></h5>
-<p>Символ <strong>Z</strong>  означает, что выход отсоединен и на него не подаются значения 0 или 1.
-Такое поведение наблюдается при использовании тристабильного буфера.</p>
-<blockquote>
-<p>Разница между символом <strong>X</strong> и <strong>Z</strong> заключается в том, что <strong>X</strong> это неопределенное или некорректное значение.
-А <strong>Z</strong>, говорит что выход отсоединен, напряжение не подается на линию.</p>
-</blockquote>
-<h4 id="целочисленные-типы-данных">Целочисленные типы данных</h4>
-<table>
-<thead>
-<tr>
-<th>Тип данных</th>
-<th>2/4 бита (0,1,X,Z)</th>
-<th>Размер в битах</th>
-<th>signed или unsigned</th>
-<th>Значение в момент старта симуляции</th>
-<th>Доп.</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>shortint</td>
-<td>2</td>
-<td>16</td>
-<td>signed</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>int</td>
-<td>2</td>
-<td>32</td>
-<td>signed</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>longint</td>
-<td>2</td>
-<td>64</td>
-<td>signed</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>bit</td>
-<td>2</td>
-<td>Задается пользователем</td>
-<td>unsigned</td>
-<td>0</td>
-<td></td>
-</tr>
-<tr>
-<td>byte</td>
-<td>2</td>
-<td>8</td>
-<td>signed</td>
-<td>0</td>
-<td>аналог signed bit [7:0]</td>
-</tr>
-<tr>
-<td>logic</td>
-<td>4</td>
-<td>Задается пользователем</td>
-<td>unsigned</td>
-<td>X</td>
-<td></td>
-</tr>
-<tr>
-<td>integer</td>
-<td>4</td>
-<td>32</td>
-<td>signed</td>
-<td>X</td>
-<td></td>
-</tr>
-<tr>
-<td>time</td>
-<td>4</td>
-<td>64</td>
-<td>unsigned</td>
-<td>0</td>
-<td>может использоваться только в тестовом окружении</td>
-</tr>
-</tbody>
-</table>]]></content:encoded>
       
     </item>
     
