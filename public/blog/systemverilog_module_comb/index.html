@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="ru"><meta charset="utf-8"><meta name="generator" content="Hugo 0.83.1" /><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark"><title>SystemVerilog. Начало. Комбинационные схемы.&nbsp;&ndash;&nbsp;ArtK.me</title><link rel="stylesheet" href="/css/core.min.453539520f86f629b55249a2d9067df5b3eccdc35f6fde54942bbd8432a79600370e065c2787949ab32625e679c7d590.css" integrity="sha384-RTU5Ug&#43;G9im1Ukmi2QZ99bPszcNfb95UlCu9hDKnlgA3DgZcJ4eUmrMmJeZ5x9WQ"><meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="SystemVerilog. Начало. Комбинационные схемы." /><body><section id="header">
+<meta name="supported-color-schemes" content="light dark"><meta name="description" content="Комбинационная логика на SystemVerilog. Модули. Операторы - always_comb, assign, if else, case."><link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest"><title>SystemVerilog. Начало. Комбинационные схемы.&nbsp;&ndash;&nbsp;ArtK.me</title><link rel="stylesheet" href="/css/core.min.3c969219a5f8cc274557ea7309ca0df10061e6f17f398b1293421eeb10e5723e84eac1ef32abf3524118ee7285134d05.css" integrity="sha384-PJaSGaX4zCdFV&#43;pzCcoN8QBh5vF/OYsSk0Ie6xDlcj6E6sHvMqvzUkEY7nKFE00F"><body>
+    <div class="base-body"><section id="header" class="site header">
     <div class="header wrap"><span class="header left-side"><a class="site home" href="/"><img class="site logo" src="/img/brain_2.png" alt /><span class="site name">ArtK.me</span></a></span>
-        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/"></a><a class="nav item" href="/tags/"></a><a class="nav item" href="/about">Обо мне</a></nav></div></span></div><div class="site slogan"><span class="title">В абсолютно здравомыслящем обществе единственная свобода — это безумие.</span></div></section><section id="content"><div class="article-container"><section class="article header">
-    <h1 class="article title">SystemVerilog. Начало. Комбинационные схемы.</h1><p class="article date">Apr 10, 2021</p></section><article class="article markdown-body"><p>В языке SystemVerilog минимальной поведенческой сущностью для описания блоков цифровой аппаратуры служит <strong>модуль</strong>.
+        <span class="header right-side"><div class="nav wrap"><nav class="nav"><a class="nav item" href="/categories/">Категории</a><a class="nav item" href="/tags/">Теги</a><a class="nav item" href="/about">Обо мне</a></nav></div></span></div><div class="site slogan"><span class="title">В абсолютно здравомыслящем обществе единственная свобода — это безумие.</span></div></section><div id="content"><div class="article-container"><section class="article header">
+    <h1 class="article title">SystemVerilog. Начало. Комбинационные схемы.</h1><p class="article date">Apr 10, 2021</p></section><article class="article markdown-body"><p>В языке SystemVerilog минимальной поведенческой сущностью для описания блоков цифровой аппаратуры служит <strong>модуль</strong>.<br />
 Модуль имеет входные и выходные сигналы. В SystemVerilog есть два основных типа сигналов: <em>logic</em> и <em>net</em>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span> <span class="n">func</span> <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> 
              <span class="k">output</span> <span class="k">logic</span> <span class="n">result</span><span class="p">);</span>
     <span class="k">assign</span> <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&amp;</span> <span class="n">b</span> <span class="o">&amp;</span> <span class="n">c</span><span class="p">;</span>
 <span class="k">endmodule</span><span class="o">:</span> <span class="n">func</span>
 </code></pre></div><blockquote>
-<p>В примере выше я описал простой модуль с названием <strong>func</strong>.
-В данном случае модуль принимает на вход три сигнала <strong>a</strong>, <strong>b</strong>, <strong>c</strong> и отдает на выход один сигнал <strong>result</strong>.
-Все сигналы имеют тип <em>logic</em>, который появился в SystemVerilog как замена <em>reg</em>. <br>
+<p>В примере выше я описал простой модуль с названием <strong>func</strong>.<br />
+В данном случае модуль принимает на вход три сигнала <strong>a</strong>, <strong>b</strong>, <strong>c</strong> и отдает на выход один сигнал <strong>result</strong>.<br />
+Все сигналы имеют тип <em>logic</em>, который появился в SystemVerilog как замена <em>reg</em>. <br><br />
 <code>Тип</code> <em>logic</em> <code>стоит использовать везде, кроме описания сигналов с несколькими источниками.</code></p>
 </blockquote>
-<hr>
+<hr />
 <h3 id="комбинационные-схемы">Комбинационные схемы</h3>
-<p>Отличительная особенность комбинационных схем состоит в том,
-что значения на выходах определяются только значениями на входе. Комбинационные схемы не имеют состояния,
-и не хранят результат предыдущих операций.
-<br>
+<p>Отличительная особенность комбинационных схем состоит в том,<br />
+что значения на выходах определяются только значениями на входе. Комбинационные схемы не имеют состояния,<br />
+и не хранят результат предыдущих операций.<br />
+<br><br />
 Для описания комбинационных схем в SystemVerilog используются операторы:</p>
 <h5 id="assign">assign</h5>
 <p>Оператор непрерывного присваивания, вычисление значения <strong>y</strong> происходит сразу при изменении значения <strong>a</strong>.</p>
@@ -30,9 +33,9 @@
 </code></pre></div><h5 id="always_comb">always_comb</h5>
 <p><strong>always_comb</strong> появился как расширение оператора <strong>always</strong>, который в общем виде выглядит следующим образом:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">always</span> <span class="p">@(</span><span class="err">список</span> <span class="err">чувствительности</span><span class="p">)</span>
-</code></pre></div><p><strong>always_comb</strong> эквивалентен <strong>always @(*)</strong>, но <strong>always_comb</strong> предпочтительнее,
+</code></pre></div><p><strong>always_comb</strong> эквивалентен <strong>always @(*)</strong>, но <strong>always_comb</strong> предпочтительнее,<br />
 т.к. если данный блок будет содержать не только комбинационную логику, SystemVerilog будет выдавать предупреждение.</p>
-<p><strong>always_comb</strong> похож на цикл, который ждет изменения любого значения в правой части уравнений,
+<p><strong>always_comb</strong> похож на цикл, который ждет изменения любого значения в правой части уравнений,<br />
 как только это происходит, блок выполняется.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span> <span class="n">func</span> <span class="p">(</span><span class="k">input</span> <span class="k">logic</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> 
       <span class="k">output</span> <span class="k">logic</span> <span class="n">result</span><span class="p">);</span>
@@ -44,10 +47,10 @@
 <span class="cm">/* Как только поменяется значение на одном из входов(a, b, c)
 </span><span class="cm">будет вычислен result */</span>
 
-</code></pre></div><hr>
+</code></pre></div><hr />
 <h4 id="операторы-выбора-и-управления">Операторы выбора и управления</h4>
 <h5 id="if-else">if else</h5>
-<p>Операторы <em>if</em> <em>else</em> работают по такому же принципу как и в классических языках программирования.
+<p>Операторы <em>if</em> <em>else</em> работают по такому же принципу как и в классических языках программирования.<br />
 В общем виде объявление выглядит так:</p>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">if</span> <span class="p">(</span><span class="n">conditional_expression</span><span class="p">)</span> <span class="n">statements</span><span class="p">;</span>
 <span class="k">else</span> <span class="n">statement</span><span class="p">;</span>
@@ -98,8 +101,8 @@
 </code></pre></div><blockquote>
 <p><code>Если забыть указать оператор default, то наша схема уже не будет комбинационной. Оператор case принимает 3-битную переменную, которую мы получаем с помощью оператора конкатенации {} из 3 переменных a, b  и c. У 3-битной переменной может быть восемь возможных значений, а мы указали только пять. Инструменты синтеза проанализировав код увидят, что если значение будут 3'b011, 3'b110, 3'b010,  то значение result - это результат выполнения предыдущего цикла.</code></p>
 </blockquote>
-<p>Оператор <em>unique case</em> работает похожим образом, что и <em>case</em> с <em>default</em>.
-Инструменты синтеза, сталкиваясь с оператором <em>unique case</em>, будут выдавать ошибку если на вход подаётся недопустимое значение,
+<p>Оператор <em>unique case</em> работает похожим образом, что и <em>case</em> с <em>default</em>.<br />
+Инструменты синтеза, сталкиваясь с оператором <em>unique case</em>, будут выдавать ошибку если на вход подаётся недопустимое значение,<br />
 которое не перечислено в кейсах.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">unique</span> <span class="k">case</span> <span class="p">({</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">})</span>
     <span class="mh">3</span><span class="mb">&#39;b000</span><span class="p">,</span> <span class="mh">3</span><span class="mb">&#39;b001</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
@@ -107,7 +110,7 @@
     <span class="mh">3</span><span class="mb">&#39;b100</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
     <span class="mh">3</span><span class="mb">&#39;b111</span><span class="o">:</span> <span class="n">result</span> <span class="o">=</span> <span class="mh">1</span><span class="p">;</span>
 <span class="k">endcase</span>
-</code></pre></div><hr>
+</code></pre></div><hr />
 <h5 id="параметризованные-модули">Параметризованные модули</h5>
 <p>Входной или выходной сигнал типа <em>logic</em> может быть не только проводом, но и шиной данных, которая передаёт несколько бит информации.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span> <span class="n">example</span>
@@ -118,11 +121,11 @@
 </span><span class="cm">на выход 2-битную шину result
 </span><span class="cm">*/</span>
 </code></pre></div><blockquote>
-<p>a[1:0] - представляет 2-битную шину. <br>
-Биты, от старшего к младшему, записываются: a[1], a[0] - такой порядок бит называется little-endian.
+<p>a[1:0] - представляет 2-битную шину. <br><br />
+Биты, от старшего к младшему, записываются: a[1], a[0] - такой порядок бит называется little-endian.<br />
 Когда биты записываются в обратном порядке a[0:1] - такой порядок называется big-endian.</p>
 </blockquote>
-<p>Для того чтобы модули можно было переиспользовать, кол-во бит в шинах может быть задано параметром и переопределятся
+<p>Для того чтобы модули можно было переиспользовать, кол-во бит в шинах может быть задано параметром и переопределятся<br />
 в зависимости от контекста вызова и необходимости.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span> <span class="n">exampleParam</span>
         <span class="p">#(</span><span class="k">parameter</span> <span class="n">W</span> <span class="o">=</span> <span class="mh">8</span><span class="p">)</span> <span class="c1">// шина данных задана через параметр
@@ -138,17 +141,16 @@
 </span><span class="c1"></span>    <span class="c1">// она становится 32-битной
 </span><span class="c1"></span>    <span class="n">exampleParam</span> <span class="p">(#</span><span class="mh">32</span><span class="p">)</span> <span class="n">a1</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">result</span><span class="p">);</span>
 <span class="k">endmodule</span><span class="o">:</span> <span class="n">ex2</span>
-</code></pre></div><hr>
+</code></pre></div><hr />
 <h5 id="перечисления-enum">Перечисления (enum)</h5>
-<p>Перечисления в SystemVerilog очень похожы на enum в классических языках программирования.
+<p>Перечисления в SystemVerilog очень похожы на enum в классических языках программирования.<br />
 Использование имен вместо числовых значений уменьшает вероятность ошибки.</p>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="c1">// переменные op1 и op2 - строго типизированы,
 </span><span class="c1">// могут принимать одно из трех значений (ADD, MOV, JMP).
 </span><span class="c1"></span><span class="k">enum</span> <span class="p">{</span><span class="n">ADD</span><span class="p">,</span> <span class="n">MOV</span><span class="p">,</span> <span class="n">JMP</span><span class="p">}</span> <span class="n">op1</span><span class="p">,</span> <span class="n">op2</span><span class="p">;</span>
 </code></pre></div><blockquote>
-<p>По умолчанию элементы перечесления имеют тип <em>int</em> и принимают последовательные значения начиная с 0.
-Можно указать любой <a href="/blog/systemverilog_data_types/"title="целочисленный тип">целочисленный тип</a>
-.</p>
+<p>По умолчанию элементы перечесления имеют тип <em>int</em> и принимают последовательные значения начиная с 0.<br />
+Можно указать любой <a href="/blog/systemverilog_data_types/"title="целочисленный тип">целочисленный тип</a>.</p>
 </blockquote>
 <div class="highlight"><pre class="chroma"><code class="language-sv" data-lang="sv"><span class="k">module</span><span class="o">:</span> <span class="n">example1</span><span class="p">;</span>
     <span class="k">enum</span> <span class="k">logic</span> <span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span> <span class="p">{</span><span class="n">ADD</span><span class="p">,</span> <span class="n">SUB</span><span class="p">,</span> <span class="n">AND</span><span class="p">,</span> <span class="n">OR</span><span class="p">,</span> <span class="n">XOR</span><span class="p">}</span> <span class="n">op</span><span class="p">;</span>
@@ -187,9 +189,7 @@
     
     <span class="p">...</span>
 <span class="k">endmodule</span><span class="o">:</span> <span class="n">alu</span>
-</code></pre></div></article><section class="article labels"><a class="category" href=/categories/%D1%8F%D0%B7%D1%8B%D0%BA%D0%B8-%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82%D1%83%D1%80%D1%8B/>Языки описания аппаратуры</a><a class="tag" href=/tags/systemverilog/>SystemVerilog</a><a class="tag" href=/tags/verilog/>verilog</a><a class="tag" href=/tags/%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B8/>модули</a><a class="tag" href=/tags/%D0%BA%D0%BE%D0%BC%D0%B1%D0%B8%D0%BD%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F-%D0%BB%D0%BE%D0%B3%D0%B8%D0%BA%D0%B0/>комбинационная логика</a><a class="tag" href=/tags/always_comb/>always_comb</a></section>
-</div>
-<div class="article bottom"><section class="article navigation"><p><a class="link" href="/blog/systemverilog_data_types/"><span class="iconfont icon-article"></span>PostgreSQL 12. Заметки.</a></p><p><a class="link" href="/blog/systemverilog_data_types/"><span class="iconfont icon-article"></span>SystemVerilog. Целочисленные типы данных.</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
+</code></pre></div></article><section class="article labels"><a class="category" href=/categories/%D1%8F%D0%B7%D1%8B%D0%BA%D0%B8-%D0%BE%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B0%D0%BF%D0%BF%D0%B0%D1%80%D0%B0%D1%82%D1%83%D1%80%D1%8B/>Языки описания аппаратуры</a><a class="tag" href=/tags/systemverilog/>SystemVerilog</a><a class="tag" href=/tags/verilog/>verilog</a><a class="tag" href=/tags/%D0%BC%D0%BE%D0%B4%D1%83%D0%BB%D0%B8/>модули</a><a class="tag" href=/tags/%D0%BA%D0%BE%D0%BC%D0%B1%D0%B8%D0%BD%D0%B0%D1%86%D0%B8%D0%BE%D0%BD%D0%BD%D0%B0%D1%8F-%D0%BB%D0%BE%D0%B3%D0%B8%D0%BA%D0%B0/>комбинационная логика</a><a class="tag" href=/tags/always_comb/>always_comb</a></section></div><section class="article navigation"><p><a class="link" href="/blog/ubuntu_update/"><span class="li">&larr;</span>Обновление Ubuntu 20.04/20.10 до 21.04</a></p><p><a class="link" href="/blog/systemverilog_data_types/"><span class="li">&rarr;</span>SystemVerilog. Целочисленные типы данных.</a></p></section><section class="article discussion"><div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -208,12 +208,13 @@
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div></section><section id="footer"><div class="footer-wrap">
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a></section></div><section id="footer" class="footer"><div class="footer-wrap">
     <p class="copyright">©2021 Art Khov</p>
-    <p class="powerby"><span>Powered&nbsp;by&nbsp;</span><a href="https://gohugo.io" 
-        target="_blank" rel="noopener noreferrer">Hugo</a><span>&nbsp;&amp;&nbsp;</span><a href="https://themes.gohugo.io/hugo-notepadium/" 
-        target="_blank" rel="noopener noreferrer">Notepadium</a></p></div>
-</section><script src="/js/hljs.min.72e76ccf211868d08e31d7ca45c02501991bd760f28809c52045fa79fb7b7428664bb54ae875b46031ebc760c77b9562.js" integrity="sha384-cudszyEYaNCOMdfKRcAlAZkb12DyiAnFIEX6eft7dChmS7VK6HW0YDHrx2DHe5Vi"></script><script>hljs.initHighlightingOnLoad();</script>
+    <p class="powerby"><span>Powered by </span><a href="https://gohugo.io" 
+        target="_blank">Hugo</a><span> and the </span><a href="https://themes.gohugo.io/hugo-notepadium/" 
+        target="_blank">Notepadium</a></p>
+</div></section><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/&#43;DiW/UqRcLbRjq" crossorigin="anonymous"><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l&#43;B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd&#43;qj&#43;o24G5ZU2zJz" crossorigin="anonymous"></script><script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script><script src="/js/hljs.min.72e76ccf211868d08e31d7ca45c02501991bd760f28809c52045fa79fb7b7428664bb54ae875b46031ebc760c77b9562.js" integrity="sha384-cudszyEYaNCOMdfKRcAlAZkb12DyiAnFIEX6eft7dChmS7VK6HW0YDHrx2DHe5Vi"></script><script>hljs.initHighlightingOnLoad();</script>
 <script type="application/javascript">
 var doNotTrack = false;
 if (!doNotTrack) {
@@ -224,6 +225,7 @@ if (!doNotTrack) {
 }
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
+</div>
 </body>
 
 </html>
