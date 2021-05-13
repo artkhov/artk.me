@@ -1,7 +1,7 @@
 baseURL = "https://artk.me"
 title = "ArtK.me"
-theme = "hugo-notepadium"
-copyright = "©2020 Art Khov"
+theme = "hugo-notepadium_old"
+copyright = "©2021 Art Khov"
 
 languageCode = "ru"  # for the RSS generation
 defaultContentLanguage = "ru"
@@ -20,8 +20,32 @@ googleAnalytics = "UA-166073619-1"
 codeFences = true
 noClasses = false
 
+#[markup.goldmark.renderer]
+#unsafe = true  # enable raw HTML in Markdown
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.extensions]
+definitionList = true
+footnote = true
+linkify = true
+strikethrough = true
+table = true
+taskList = true
+typographer = true
+
+[markup.goldmark.parser]
+autoHeadingID = true
+autoHeadingIDType = "github"
+
+[markup.goldmark.parser.attribute]
+block = true
+title = true
+
 [markup.goldmark.renderer]
-unsafe = true  # enable raw HTML in Markdown
+hardWraps = true
+unsafe = true
+xhtml = true
 
 [params]
 style = "auto"  # default: auto. light: light theme, dark: dark theme, auto: based on system.
@@ -36,7 +60,7 @@ description = "Инженерия и прочие радости. Блог о п
 enable = true  # En/Disable comments globally, default: false. You can always enable comments on per page.
 
 [params.math]
-enable = false  # optional: true, false. Enable globally, default: false. You can always enable math on per page.
+enable = true  # optional: true, false. Enable globally, default: false. You can always enable math on per page.
 use = "katex"  # option: "katex", "mathjax". default: "katex"
 
 [params.syntax]

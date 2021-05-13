@@ -1,7 +1,7 @@
 +++
 title = "SystemVerilog. Целочисленные типы данных."
 description = "SystemVerilog. Типы данных. Целочисленные типы данных."
-date = 2020-05-09T18:41:51+03:00
+date = 2021-04-09T18:41:51+03:00
 draft = false
 tags = [
     "SystemVerilog",
