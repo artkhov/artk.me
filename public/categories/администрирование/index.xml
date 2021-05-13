@@ -1,0 +1,372 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Администрирование on ArtK.me</title>
+    <link>https://artk.me/categories/%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/</link>
+    <description>Recent content in Администрирование on ArtK.me</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ru</language>
+    <copyright>©2021 Art Khov</copyright>
+    <lastBuildDate>Thu, 13 May 2021 12:45:07 +0300</lastBuildDate>
+    
+        <atom:link href="https://artk.me/categories/%D0%B0%D0%B4%D0%BC%D0%B8%D0%BD%D0%B8%D1%81%D1%82%D1%80%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Обновление Ubuntu 20.04/20.10 до 21.04</title>
+      <link>https://artk.me/blog/ubuntu_update/</link>
+      <pubDate>Thu, 13 May 2021 12:45:07 +0300</pubDate>
+      
+      <guid>https://artk.me/blog/ubuntu_update/</guid>
+      <description>&lt;p&gt;22 апреля вышел новый релиз ubuntu 21.04.
+Из заметных нововведений стоит отметить, что Ubuntu 21.04 по умолчанию использует Wayland. А это значит,
+что приложения созданные с помощью Electron и Flutter автоматически используют преимущества Wayland для более плавной графики и лучшего масштабирования.&lt;/p&gt;
+&lt;p&gt;Как пример, ваш любимый VS code, должен начать работать еще лучше.
+Почитать о всех изменениях можно на официальной странице релиза &lt;a href=&#34;%22https://ubuntu.com/blog/ubuntu-21-04-is-here%22&#34;&gt;link&lt;/a&gt;
+&lt;/p&gt;
+&lt;h5 id=&#34;aaaa&#34;&gt;aaaa&lt;/h5&gt;
+&lt;p&gt;{{ $image := resources.Get &amp;ldquo;update_ubuntu/update_all_packages.png&amp;rdquo; }}
+&lt;a href=&#34;%22update_ubuntu/update_all_packages.png%22&#34;&gt;aa&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;{{ with .Resources.ByType &amp;ldquo;image&amp;rdquo; }}
+{{ range . }}
+{{ .RelPermalink }}
+{{ end }}
+{{ end }}&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PostgreSQL 12. Заметки.</title>
+      <link>https://artk.me/blog/systemverilog_data_types/</link>
+      <pubDate>Thu, 13 May 2021 12:29:42 +0300</pubDate>
+      
+      <guid>https://artk.me/blog/systemverilog_data_types/</guid>
+      <description>&lt;p&gt;Вопреки расхожему мнению, при описании цифровой схемы, бит может принимать значение отличное от 1 или 0 (true | false),
+что на самом деле противоречит булевой алгебре. Давайте разбираться&amp;hellip;&lt;/p&gt;
+&lt;p&gt;За исключением 0 и 1, бит так же может принимать значение &lt;strong&gt;Х&lt;/strong&gt; - представляющее неизвестное значение или &lt;strong&gt;Z&lt;/strong&gt; - представляющее значение с высоким импедансом.&lt;/p&gt;
+&lt;h5 id=&#34;неизвестное-значение-x&#34;&gt;Неизвестное значение &lt;strong&gt;X&lt;/strong&gt;&lt;/h5&gt;</description>
+    </item>
+    
+    <item>
+      <title>SystemVerilog. Начало. Комбинационные схемы.</title>
+      <link>https://artk.me/blog/systemverilog_module_comb/</link>
+      <pubDate>Sat, 10 Apr 2021 10:49:22 +0300</pubDate>
+      
+      <guid>https://artk.me/blog/systemverilog_module_comb/</guid>
+      <description>&lt;p&gt;В языке SystemVerilog минимальной поведенческой сущностью для описания блоков цифровой аппаратуры служит &lt;strong&gt;модуль&lt;/strong&gt;.
+Модуль имеет входные и выходные сигналы. В SystemVerilog есть два основных типа сигналов: &lt;em&gt;logic&lt;/em&gt; и &lt;em&gt;net&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+             &lt;span class=&#34;k&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;func&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;В примере выше я описал простой модуль с названием &lt;strong&gt;func&lt;/strong&gt;.
+В данном случае модуль принимает на вход три сигнала &lt;strong&gt;a&lt;/strong&gt;, &lt;strong&gt;b&lt;/strong&gt;, &lt;strong&gt;c&lt;/strong&gt; и отдает на выход один сигнал &lt;strong&gt;result&lt;/strong&gt;.
+Все сигналы имеют тип &lt;em&gt;logic&lt;/em&gt;, который появился в SystemVerilog как замена &lt;em&gt;reg&lt;/em&gt;. &lt;br&gt;
+&lt;code&gt;Тип&lt;/code&gt; &lt;em&gt;logic&lt;/em&gt; &lt;code&gt;стоит использовать везде, кроме описания сигналов с несколькими источниками.&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;комбинационные-схемы&#34;&gt;Комбинационные схемы&lt;/h3&gt;
+&lt;p&gt;Отличительная особенность комбинационных схем состоит в том,
+что значения на выходах определяются только значениями на входе. Комбинационные схемы не имеют состояния,
+и не хранят результат предыдущих операций.
+&lt;br&gt;
+Для описания комбинационных схем в SystemVerilog используются операторы:&lt;/p&gt;
+&lt;h5 id=&#34;assign&#34;&gt;assign&lt;/h5&gt;
+&lt;p&gt;Оператор непрерывного присваивания, вычисление значения &lt;strong&gt;y&lt;/strong&gt; происходит сразу при изменении значения &lt;strong&gt;a&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;assign&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;y&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;~&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;always_comb&#34;&gt;always_comb&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;always_comb&lt;/strong&gt; появился как расширение оператора &lt;strong&gt;always&lt;/strong&gt;, который в общем виде выглядит следующим образом:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;always&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;@(&lt;/span&gt;&lt;span class=&#34;err&#34;&gt;список&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;чувствительности&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;always_comb&lt;/strong&gt; эквивалентен &lt;strong&gt;always @(*)&lt;/strong&gt;, но &lt;strong&gt;always_comb&lt;/strong&gt; предпочтительнее,
+т.к. если данный блок будет содержать не только комбинационную логику, SystemVerilog будет выдавать предупреждение.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;always_comb&lt;/strong&gt; похож на цикл, который ждет изменения любого значения в правой части уравнений,
+как только это происходит, блок выполняется.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;func&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; 
+      &lt;span class=&#34;k&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;always_comb&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+      &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+  &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;func&lt;/span&gt;
+&lt;span class=&#34;cm&#34;&gt;/* Как только поменяется значение на одном из входов(a, b, c)
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;будет вычислен result */&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h4 id=&#34;операторы-выбора-и-управления&#34;&gt;Операторы выбора и управления&lt;/h4&gt;
+&lt;h5 id=&#34;if-else&#34;&gt;if else&lt;/h5&gt;
+&lt;p&gt;Операторы &lt;em&gt;if&lt;/em&gt; &lt;em&gt;else&lt;/em&gt; работают по такому же принципу как и в классических языках программирования.
+В общем виде объявление выглядит так:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;conditional_expression&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;statements&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;statement&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Пример модуля с if else
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+     &lt;span class=&#34;k&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+
+    &lt;span class=&#34;k&#34;&gt;always_comb&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;begin&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;c&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;end&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;if&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;case&#34;&gt;case&lt;/h5&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// Обычный case
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;exampleCase&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+     &lt;span class=&#34;k&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&#34;k&#34;&gt;always_comb&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+            &lt;span class=&#34;mh&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b00&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;mh&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b01&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;mh&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b10&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;mh&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b11&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;f&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;endcase&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;exampleCase&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Оператор &lt;em&gt;case&lt;/em&gt; находит первый подходящий вариант, после чего исполняется оператор справа.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;{a, b} - &lt;code&gt;{}&lt;/code&gt; оператор конкатенации, позволяет создать новую переменную. Если &lt;em&gt;a = 0&lt;/em&gt;, &lt;em&gt;b = 1&lt;/em&gt;, то переменная &lt;em&gt;{a, b}&lt;/em&gt; будет иметь значение &lt;em&gt;01&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;конструкция &lt;em&gt;2&amp;rsquo;b00&lt;/em&gt; позволяет определить константу с заданной разрядностью.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b011&lt;/span&gt;  &lt;span class=&#34;c1&#34;&gt;// 3-битная константа с двоичным значением
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mi&#34;&gt;&amp;#39;d8&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// 3-битная константа с десятичным значением
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;3&amp;#39;hA&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// 3-битная константа с шестнадцатеричным значением
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h6 id=&#34;unique-case&#34;&gt;unique case&lt;/h6&gt;
+&lt;p&gt;Часто ф-ции задаются не полностью, т.к. часть значений не имеет значения, такие комбинации называются несущественными(&amp;ldquo;don&amp;rsquo;t cares&amp;rdquo;).&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+    &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b001&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b101&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b100&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b111&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;default&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// если значения не совпадает с 3-битными константами сверху,
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;                         &lt;span class=&#34;c1&#34;&gt;// то выбирается default
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;endcase&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Если забыть указать оператор default, то наша схема уже не будет комбинационной. Оператор case принимает 3-битную переменную, которую мы получаем с помощью оператора конкатенации {} из 3 переменных a, b  и c. У 3-битной переменной может быть восемь возможных значений, а мы указали только пять. Инструменты синтеза проанализировав код увидят, что если значение будут 3&#39;b011, 3&#39;b110, 3&#39;b010,  то значение result - это результат выполнения предыдущего цикла.&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Оператор &lt;em&gt;unique case&lt;/em&gt; работает похожим образом, что и &lt;em&gt;case&lt;/em&gt; с &lt;em&gt;default&lt;/em&gt;.
+Инструменты синтеза, сталкиваясь с оператором &lt;em&gt;unique case&lt;/em&gt;, будут выдавать ошибку если на вход подаётся недопустимое значение,
+которое не перечислено в кейсах.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;unique&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;({&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;c&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;})&lt;/span&gt;
+    &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b000&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b001&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b101&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b100&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b111&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endcase&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h5 id=&#34;параметризованные-модули&#34;&gt;Параметризованные модули&lt;/h5&gt;
+&lt;p&gt;Входной или выходной сигнал типа &lt;em&gt;logic&lt;/em&gt; может быть не только проводом, но и шиной данных, которая передаёт несколько бит информации.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;example&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+         &lt;span class=&#34;k&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;example&lt;/span&gt;
+&lt;span class=&#34;cm&#34;&gt;/* Модуль example принимает на вход две 2-битных шины a и b 
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;на выход 2-битную шину result
+&lt;/span&gt;&lt;span class=&#34;cm&#34;&gt;*/&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;a[1:0] - представляет 2-битную шину. &lt;br&gt;
+Биты, от старшего к младшему, записываются: a[1], a[0] - такой порядок бит называется little-endian.
+Когда биты записываются в обратном порядке a[0:1] - такой порядок называется big-endian.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Для того чтобы модули можно было переиспользовать, кол-во бит в шинах может быть задано параметром и переопределятся
+в зависимости от контекста вызова и необходимости.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;exampleParam&lt;/span&gt;
+        &lt;span class=&#34;p&#34;&gt;#(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;parameter&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;W&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;c1&#34;&gt;// шина данных задана через параметр
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;        &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;W&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+         &lt;span class=&#34;k&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;W&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;exampleParam&lt;/span&gt;
+
+&lt;span class=&#34;c1&#34;&gt;// вызов модуля exampleParam в другой часте программы
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// с переопределением размерности шины данных
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ex2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;c1&#34;&gt;// переопределение размерности шины
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;c1&#34;&gt;// она становится 32-битной
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;    &lt;span class=&#34;n&#34;&gt;exampleParam&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(#&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;32&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a1&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;ex2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;hr&gt;
+&lt;h5 id=&#34;перечисления-enum&#34;&gt;Перечисления (enum)&lt;/h5&gt;
+&lt;p&gt;Перечисления в SystemVerilog очень похожы на enum в классических языках программирования.
+Использование имен вместо числовых значений уменьшает вероятность ошибки.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;c1&#34;&gt;// переменные op1 и op2 - строго типизированы,
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// могут принимать одно из трех значений (ADD, MOV, JMP).
+&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ADD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;MOV&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;JMP&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;op1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;op2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;По умолчанию элементы перечесления имеют тип &lt;em&gt;int&lt;/em&gt; и принимают последовательные значения начиная с 0.
+Можно указать любой &lt;a href=&#34;https://artk.me/blog/systemverilog_data_types/&#34;title=&#34;целочисленный тип&#34;&gt;целочисленный тип&lt;/a&gt;
+.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;example1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ADD&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;SUB&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;OR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;XOR&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;op&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;always_comb&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;unique&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;case&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;op&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+            &lt;span class=&#34;nl&#34;&gt;ADD:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;nl&#34;&gt;SUB:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;nl&#34;&gt;AND:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;&amp;amp;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;nl&#34;&gt;OR:&lt;/span&gt;  &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;|&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+            &lt;span class=&#34;nl&#34;&gt;XOR:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;^&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+        &lt;span class=&#34;k&#34;&gt;endcase&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;example1&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;example2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+    &lt;span class=&#34;k&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ADD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b001&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;SUB&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b011&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b111&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;OR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b110&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;XOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b100&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;op&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;example2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h5 id=&#34;определение-типа-typedef&#34;&gt;Определение типа (typedef)&lt;/h5&gt;
+&lt;p&gt;Ключевое слово &lt;strong&gt;typedef&lt;/strong&gt;, позволяет определить новый тип данных, который можно использовать при определении переменных и портов.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sv&#34; data-lang=&#34;sv&#34;&gt;&lt;span class=&#34;k&#34;&gt;typedef&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;enum&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+       &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ADD&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b001&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;SUB&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b011&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;AND&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b111&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;OR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;  &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b110&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+        &lt;span class=&#34;n&#34;&gt;XOR&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;mb&#34;&gt;&amp;#39;b100&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;aluInstruction&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+
+&lt;span class=&#34;k&#34;&gt;module&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alu&lt;/span&gt;
+    &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;b&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+     &lt;span class=&#34;k&#34;&gt;output&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;logic&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;mh&#34;&gt;0&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;result&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;
+     &lt;span class=&#34;k&#34;&gt;input&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;aluInstruction&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;op&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&#34;p&#34;&gt;...&lt;/span&gt;
+&lt;span class=&#34;k&#34;&gt;endmodule&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;alu&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</description>
+    </item>
+    
+    <item>
+      <title>SystemVerilog. Целочисленные типы данных.</title>
+      <link>https://artk.me/blog/systemverilog_data_types/</link>
+      <pubDate>Fri, 09 Apr 2021 18:41:51 +0300</pubDate>
+      
+      <guid>https://artk.me/blog/systemverilog_data_types/</guid>
+      <description>&lt;p&gt;Вопреки расхожему мнению, при описании цифровой схемы, бит может принимать значение отличное от 1 или 0 (true | false),
+что на самом деле противоречит булевой алгебре. Давайте разбираться&amp;hellip;&lt;/p&gt;
+&lt;p&gt;За исключением 0 и 1, бит так же может принимать значение &lt;strong&gt;Х&lt;/strong&gt; - представляющее неизвестное значение или &lt;strong&gt;Z&lt;/strong&gt; - представляющее значение с высоким импедансом.&lt;/p&gt;
+&lt;h5 id=&#34;неизвестное-значение-x&#34;&gt;Неизвестное значение &lt;strong&gt;X&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;В схеме&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Символ &lt;strong&gt;X&lt;/strong&gt; обозначает неизвестное или недопустимое значение физического напряжения в схеме, отличающееся от 0 и 1.
+Примером такого поведения служит участок схемы, где на выход подается сразу два сигнала 0 и 1, одновременно.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;При моделировании&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Значение &lt;strong&gt;X&lt;/strong&gt; иногда используется программами моделирования для обозначения неинициализированного значения.
+Так же значение &lt;strong&gt;X&lt;/strong&gt; принимают биты переменные  4-х значных типов во время старта симуляции до тех пор пока бит не получит значение.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;В таблице истинности&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Разработчики цифровых схем используют символ &lt;strong&gt;X&lt;/strong&gt; для обозначения в таблицах истинности безразличных переменных,
+от которых не зависит состояние выходов.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;Не стоит путать&lt;/code&gt; &lt;strong&gt;X&lt;/strong&gt; &lt;code&gt;в этих разных случаях, появление&lt;/code&gt; &lt;strong&gt;X&lt;/strong&gt;  &lt;code&gt;в схеме означает, что цепь имеет неизвестное или недопустимое значение.&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h5 id=&#34;значение-с-высоким-импедансом-z&#34;&gt;Значение с высоким импедансом &lt;strong&gt;Z&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;Символ &lt;strong&gt;Z&lt;/strong&gt;  означает, что выход отсоединен и на него не подаются значения 0 или 1.
+Такое поведение наблюдается при использовании тристабильного буфера.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Разница между символом &lt;strong&gt;X&lt;/strong&gt; и &lt;strong&gt;Z&lt;/strong&gt; заключается в том, что &lt;strong&gt;X&lt;/strong&gt; это неопределенное или некорректное значение.
+А &lt;strong&gt;Z&lt;/strong&gt;, говорит что выход отсоединен, напряжение не подается на линию.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h4 id=&#34;целочисленные-типы-данных&#34;&gt;Целочисленные типы данных&lt;/h4&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Тип данных&lt;/th&gt;
+&lt;th&gt;2/4 бита (0,1,X,Z)&lt;/th&gt;
+&lt;th&gt;Размер в битах&lt;/th&gt;
+&lt;th&gt;signed или unsigned&lt;/th&gt;
+&lt;th&gt;Значение в момент старта симуляции&lt;/th&gt;
+&lt;th&gt;Доп.&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;shortint&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;16&lt;/td&gt;
+&lt;td&gt;signed&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;int&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;signed&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;longint&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;signed&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;bit&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;Задается пользователем&lt;/td&gt;
+&lt;td&gt;unsigned&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;byte&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;8&lt;/td&gt;
+&lt;td&gt;signed&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;аналог signed bit [7:0]&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;logic&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;Задается пользователем&lt;/td&gt;
+&lt;td&gt;unsigned&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;integer&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;32&lt;/td&gt;
+&lt;td&gt;signed&lt;/td&gt;
+&lt;td&gt;X&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;time&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;64&lt;/td&gt;
+&lt;td&gt;unsigned&lt;/td&gt;
+&lt;td&gt;0&lt;/td&gt;
+&lt;td&gt;может использоваться только в тестовом окружении&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;</description>
+    </item>
+    
+    <item>
+      <title>Обо мне</title>
+      <link>https://artk.me/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://artk.me/about/</guid>
+      <description>&lt;p&gt;Привет! &lt;br&gt;
+Меня зовут Артём. &lt;br&gt;
+Здесь я пишу о том, что меня интересует и просто веду свои заметки. &lt;br&gt;
+Если у тебя появились вопросы, ты можешь написать мне на &lt;strong&gt;&lt;a href=&#34;mailto:artk@artk.me&#34;&gt;artk@artk.me&lt;/a&gt;&lt;/strong&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

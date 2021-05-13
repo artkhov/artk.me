@@ -1,7 +1,7 @@
 +++
 title = "SystemVerilog. Начало. Комбинационные схемы."
 description = "Комбинационная логика на SystemVerilog. Модули. Операторы - always_comb, assign, if else, case."
-date = 2020-05-10T10:49:22+03:00
+date = 2021-04-10T10:49:22+03:00
 draft = false
 tags = [
     "SystemVerilog",
